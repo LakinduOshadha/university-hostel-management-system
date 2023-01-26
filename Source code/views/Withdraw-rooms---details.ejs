@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="ROOM DETAILS">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>WITHDRAW Rooms</title>
+    <link rel="stylesheet" href="main.css" media="screen">
+<link rel="stylesheet" href="Room-Details---serve-rooms.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="mainhtml.js" defer=""></script
+
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "Hostel Management System",
+		"logo": "images/BLACK.png"
+}</script>
+    <meta property="og:title" content="Room Details - serve rooms">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+  </head>
+  <body class="u-body"><header class=" u-clearfix u-header u-section-row-container" id="sec-cc91"><div class="u-section-rows">
+        <div class="u-grey-15 u-section-row u-section-row-1" id="sec-524c">
+          <div class="u-clearfix u-sheet u-sheet-1">
+            <a href="#" class="u-image u-logo u-image-1" data-image-width="1600" data-image-height="337">
+              <img src="images/BLACK.png" class="u-logo-image u-logo-image-1" data-image-width="518.0689">
+            </a>
+          </div>
+          
+          
+          
+          
+          
+        </div>
+        <div class="u-align-left u-grey-15 u-section-row u-sticky u-section-row-2" id="sec-61b2">
+          <div class="u-clearfix u-sheet u-sheet-2">
+            <a href="/logout" class="u-border-2 u-border-black u-btn u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">Sign out</a>
+          </div>
+          
+          
+          
+          
+          
+        </div>
+      </div></header>
+    <section class="u-clearfix u-grey-10 u-section-1" id="sec-37df">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h2 class="u-text u-text-default u-text-1"><b>WITHDRAW&nbsp;</b>ROOMS<br>
+        </h2>
+        <h4 name="hostelName"  class="u-align-left u-text u-text-2">Hostel : <span id = "hostelName" ><%= details.hostelName %></span></h4>
+        <h4 name = " roomNumber" class="u-align-left u-text u-text-3">Room Number : <span  id = "roomNumber"> <%= details.roomNumber %> </span></h4>
+        <h4 class="u-align-left u-text u-text-4">Students :&nbsp;</h4>
+        <div class="u-align-left u-text u-text-5" id="tempId">
+
+          <% details.roomDetails.forEach( data => { %>
+              <input id="student<%= data.id %>" disabled type="text" value="<%= data.reg_no %>" />
+
+          <% }) %>
+          </div>
+        <!-- <div>
+          <button style="width: 70px;" id="editStudents" onclick="editStudentsButtonHandle()">EDIT</button>
+        </div> -->
+        <div class="u-expanded-width u-table u-table-responsive u-table-1">
+          <table class="u-table-entity">
+            <colgroup>
+              <col width="33.1%">
+              <col width="33.1%">
+              <col width="33.8%">
+            </colgroup>
+            <thead class="u-black u-table-header u-table-header-1">
+              <tr style="height: 49px;">
+                <th class="u-table-cell">ITEM</th>
+                <th class="u-table-cell">CONDITION</th>
+                <th class="u-table-cell">NOTE</th>
+                <th class="u-table-cell">EDIT</th>
+                <!-- <th class="u-table-cell">DELETE</th> -->
+              </tr>
+            </thead>
+            <tbody class="u-table-alt-palette-5-light-1 u-table-body">
+              <% tableData.forEach( data => { %>
+              <tr style="height: 67px;">
+
+                <td class="u-table-cell"><%= data.name %></td>
+                <td class="u-table-cell">
+                  <!-- <input id="conditionStatus<%= data.item_id %>" disabled type="text" value="<%= data.conditionStatus %>" /> -->
+                
+                  <select disabled name="" id="conditionStatus<%= data.item_id %>">
+
+                    <option value="<%= data.conditionStatus %>"><%= data.conditionStatus %></option>
+                    <option value="Used">Used</option>
+                    <option value="Broken">Broken</option>
+                    <option value="Missing">Missing</option>
+
+                  </select>
+                </td>
+                <td class="u-table-cell"><input id="note<%= data.item_id %>" disabled type="text" value="<%= data.note %>" /></td>
+                
+                <td class="u-table-cell"><button style="width: 70px;" id="<%= data.item_id %>" onclick="editButtonHandle(<%= data.item_id %>)">EDIT</button></td>
+
+                <!-- <td class="u-table-cell"><button style="width: 70px;" id="delete<%= data.item_id %>" onclick="deleteButtonHandle(<%= data.item_id %>)">DELETE</button></td> -->
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+
+          <br>
+          <br>
+          <div>
+            <button onclick="location.href='/WITHDRAW-ROOMS'" id="backButton" name="backButton">
+              Back
+            </button>
+
+            <!-- <button id="updateButton" name="updateButton">
+              Update
+            </button> -->
+
+            <button onclick="withdrawButtonClick()" id="withdrawButton" >
+              Withdraw
+            </button>
+
+            
+
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-738c"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <p class="u-small-text u-text u-text-grey-25 u-text-variant u-text-1">University Hostel Managem​ent System&nbsp;<br>© Lakindu Oshadha |&nbsp;2021<br>
+        </p>
+      </div></footer>
+
+      <script>
+        
+
+        // if(tableData.length > 0) {
+        //   const tempID = <%= tableData[0].item_id %>
+        // } else {
+        //   const tempID = 5
+        // }
+          const tempID = <%=tableData[0].item_id %>;
+
+
+
+        let missingItemsArr=[tempID]
+
+
+        function editStudentsButtonHandle() {
+          const studentDiv = document.getElementById("tempId").children
+
+          
+
+          if(document.getElementById("editStudents").innerText === "EDIT") {
+            for(let i = 0; i < studentDiv.length;i++) {
+            studentDiv[i].disabled = false
+            }
+            document.getElementById("editStudents").innerText = "DONE"
+          } else {
+
+            const studentObjArr = []
+
+            for(let i = 0; i < studentDiv.length;i++) {
+              studentObjArr.studentDiv[i].value
+
+            }
+            // fetch("/updateStudents",{
+            // method: "POST",
+            // body:JSON.stringify({
+            //   conditionStatus,
+            //   note,
+            //   item_id,
+            // }),
+            // headers: {
+            //   "Content-Type": "application/json"
+            // }
+            // })
+
+          }
+
+        }
+
+        function editButtonHandle(item_id) {
+
+          const nameRef = document.getElementById(`name${item_id}`)
+          const conditionStatusRef = document.getElementById(`conditionStatus${item_id}`)
+          const noteRef = document.getElementById(`note${item_id}`)
+
+          if(document.getElementById(item_id).innerHTML === "EDIT") {
+
+            conditionStatusRef.disabled = false
+            noteRef.disabled = false
+            document.getElementById(item_id).innerHTML= "DONE"
+
+          } else {
+
+            const conditionStatus = conditionStatusRef.value
+            const note = noteRef.value
+
+            if(conditionStatus == "Missing") missingItemsArr.push(item_id)
+            
+
+            fetch("/editButtonClick",{
+            method: "POST",
+            body:JSON.stringify({
+              conditionStatus,
+              note,
+              item_id,
+            }),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+
+            conditionStatusRef.disabled = true
+            noteRef.disabled = true
+            document.getElementById(item_id).innerHTML= "EDIT"
+          }
+          
+        }
+
+        function deleteButtonHandle(item_id) {
+
+        }
+
+        document.getElementById("confirmButton").addEventListener("click", function() {
+          const hostelName = document.getElementById("hostelName").innerText
+          const roomNumber = document.getElementById("roomNumber").innerText
+          const student01 = document.getElementById("student-1").innerText
+          const student02 = document.getElementById("student-2").innerText
+          const student03 = document.getElementById("student-3").innerText
+          const student04 = document.getElementById("student-4").innerText
+
+          fetch("/roomServeConfirm",{
+            method: "POST",
+            body:JSON.stringify({
+              hostelName,
+              roomNumber,
+              student01,
+              student02,
+              student03,
+              student04
+            }),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+          
+        })
+
+
+        function withdrawButtonClick() {
+
+          let tempUrl = "/Print-Report"
+
+          let myArray = missingItemsArr;
+
+          let myArrayQry = myArray.map(function(el, idx) {
+              return 'myArray[' + idx + ']=' + el;
+          }).join('&');
+
+          console.log(tempUrl.concat("?",myArrayQry))
+
+          location.href=tempUrl.concat("?",myArrayQry)
+
+          // fetch("/Print-Report",{
+          //   method: "POST",
+          //   body:JSON.stringify({
+          //     missingItemsArr
+          //   }),
+          //   headers: {
+          //     "Content-Type": "application/json"
+          //   }
+          // })
+
+
+        }
+        document.getElementById("update-id").addEventListener("click", function() {
+          console.log("update")
+        })
+        
+      </script>
+      
+  </body>
+</html>
